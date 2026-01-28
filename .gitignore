@@ -50,3 +50,7 @@ yarn-debug.log*
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
