@@ -19,5 +19,8 @@ Rails.application.configure do
   end
   config.active_record.dump_schema_after_migration = false
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  
+  # Allow Railway production host
+  config.hosts << "vidpair-api-production.up.railway.app"
 end
 
