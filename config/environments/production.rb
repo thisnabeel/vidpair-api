@@ -20,7 +20,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
   
-  # Allow Railway production host
-  config.hosts << "vidpair-api-production.up.railway.app"
+  # Disable host authorization for API-only app
+  # Railway uses proxies/load balancers that modify host headers
+  # For API-only apps, host authorization provides little security benefit
+  config.hosts.clear
+  config.hosts << proc { |host| true }
 end
 
