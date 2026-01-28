@@ -20,10 +20,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
   
-  # Disable host authorization for API-only app
-  # Railway uses proxies/load balancers that modify host headers
-  # For API-only apps, host authorization provides little security benefit
-  config.hosts.clear
-  config.hosts << proc { |host| true }
+  # Enable DNS rebinding protection and other `Host` header attacks.
+  config.hosts = [
+    "vidpair-api-production.up.railway.app"
+  ]
+  # Skip DNS rebinding protection for the default health check endpoint.
+  config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
 
