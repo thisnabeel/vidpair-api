@@ -20,11 +20,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
   
-  # # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "vidpair-api-production.up.railway.app"
-  # ]
-  # # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  # Enable DNS rebinding protection and other `Host` header attacks.
+  config.hosts = [
+    "vidpair-api-production.up.railway.app"
+  ]
+  # Skip DNS rebinding protection for the default health check endpoint.
+  config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
 
